@@ -1,6 +1,3 @@
-// ! connect DOM element 
-const canvas = document.getElementById("animation")
-const ctx = canvas.getContext("2d")
 
 function Ball() {
     this.x = 100
@@ -27,3 +24,28 @@ Ball.prototype.move = function () {
     this.x += this.xSpeed
     this.y += this.ySpeed
 }
+
+Ball.prototype.checkCollision = function () {
+    if (this.x < 0 || this.x > 200) {
+        this.xSpeed = -this.xSpeed
+    }if (this.y < 0 || this.y > 200) {
+        this.ySpeed = -this.ySpeed
+    }
+}
+
+
+// * ball animation 
+const canvas = document.getElementById("animation")
+const ctx = canvas.getContext("2d")
+
+const ball = new Ball();
+
+setInterval(() => {
+    ctx.clearRect(0, 0, 200, 200)
+
+    ball.draw()
+    ball.move()
+    ball.checkCollision()
+
+    ctx.strokeRect(0, 0, 200, 200)
+}, 30);

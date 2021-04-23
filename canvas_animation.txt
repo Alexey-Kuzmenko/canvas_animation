@@ -94,10 +94,39 @@ Ball.prototype.move = function () {
     this.y += this.ySpeed
 }
 !Scheme of ball movement! 
-		circle (x: 100, y: 100)
+		circle: (x: 100, y: 100)
 
-	circle(x: 100 - 2, y: 100 + 3) -----> (x: 98, y: 103)
+	circle: (x: 100 - 2, y: 100 + 3) -----> (x: 98, y: 103)
 
-circlex: (x: 98 - 2, y: 103 + 3) -----> (x: 96, y: 106)
+circle: (x: 98 - 2, y: 103 + 3) -----> (x: 96, y: 106)
+--
+ПРОВЕРКА КОЛИЗИИ || ОТСКОК МЯЧА ОТ КРАЕВ ХОЛСТА 
+
+Ball.prototype.checkCollision = function () {
+    //если коордниты мяча координат преведенных в условии то мы их инвертируев(тоесть если было 3 стало -3 и наоборот)
+    if (this.x < 0 || this.x > 200) {
+        this.xSpeed = -xSpeed
+    }if (this.y < 0 || this.y > 200) {
+        this.ySpeed = -ySpeed
+    }
+}
+
+!Scheme of ball movement! 
+
+				circle: (x: 3, y: 50)
+
+			circle: (x: 3 - 2, y: 50 + 3) -----> (x: 1, y: 53)
+
+circle: (x: 1 - 2, y: 53 + 3) -----> (x: -1, y: 56)
+
+	circle: (x: -1 + 2, y: 56 + 3) -----> (x: 1, y: 59)
+			
+			circle: (x: 1 + 2, y: 59 + 3) -----> (x: 3, y: 62)
+
+
+
+
+
+
 
 
