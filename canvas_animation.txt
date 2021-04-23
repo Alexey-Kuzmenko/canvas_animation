@@ -50,3 +50,54 @@ setInterval(
             rectSize = 0
         }
     },30)
+
+BALL ANIMATION 
+--
+Пример кода :
+
+const canvas = document.getElementById("animation")
+const ctx = canvas.getContext("2d")
+
+function Ball() {
+    // позиция мяча созданного через конструктор 
+    this.x = 100
+    // координаты по y 
+    this.y = 100
+    // скорость вертикально 
+    this.xSpeed = -2
+    // скорость горизонтально 
+    this.ySpeed = 3
+}
+
+const circle = (x, y, radius, fillCircle) => {
+    ctx.beginPath()
+
+    ctx.arc(x, y, radius, 0, Math.PI * 2, false)
+        if (fillCircle) {
+            ctx.fill()
+        }else {
+            ctx.stroke()
+        }
+}
+
+//метод котрый рисует мяч 
+Ball.prototype.draw = function () {
+    //визиваем функцию circle и передаем ей аргументы 
+    circle(this.x, this.y, 3, true)
+}
+
+//метод который двигает мяч 
+Ball.prototype.move = function () {
+    //отнимаем от заднной позиции вертикальную скорость, тем самым перемещаем наш мяч
+    this.x += this.xSpeed
+    //прибавяем к изначальной позиции мяча горизонтальною "скорость", тем самым перемещая наш мяч по холсту  
+    this.y += this.ySpeed
+}
+!Scheme of ball movement! 
+		circle (x: 100, y: 100)
+
+	circle(x: 100 - 2, y: 100 + 3) -----> (x: 98, y: 103)
+
+circlex: (x: 98 - 2, y: 103 + 3) -----> (x: 96, y: 106)
+
+
