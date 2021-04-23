@@ -1,2 +1,52 @@
 CANVAS ANIMATION
 ---
+Пример кода :
+//записываем в переменную холст
+const canvas = document.getElementById("animation")
+//Обозначаем его контекст 
+const ctx = canvas.getContext("2d")
+
+//переменая для передвижения квадрата 
+let position = 0
+//визиваем метод setInterval
+
+setInterval(
+    function () {
+        //вызов метода для очистки квадрата | первые 2 числа это координаты по x & y вторые два числа размеры квадарата 200х200 пикселей 
+        ctx.clearRect(0, 0, 200, 200)
+        //мтод кторый рисует квдрат | position, 0 --> изначальная позиция квадрата | 20, 20 размеры сторон в пикселях  
+        ctx.fillRect(position, 0, 20, 20)
+
+        //увиличываем позицию на один 
+        position++
+        if (position > 200) {
+            position = 0
+        }
+    },
+    //интервал вызова фуункции 
+    30)
+
+    //! clear Rect - очистить прямоугольник
+--
+CHANGE RECT SIZE
+Пример кода:
+
+const canvas = document.getElementById("animation")
+const ctx = canvas.getContext("2d")
+
+//счётчик размера квадрата 
+	let rectSize = 0
+
+setInterval(
+    	function () {
+        ctx.clearRect(0, 0, 200, 200)
+        ctx.fillRect(0, 0, rectSize, rectSize)
+        
+        //увиличиваем размер квадрата на 1
+        rectSize++
+     
+        if (rectSize > 200) {
+            //если размер становиться больше 200 пикселей возвращаем разме к значению = 0
+            rectSize = 0
+        }
+    },30)
